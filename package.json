@@ -1,6 +1,6 @@
 {
   "name": "react-quicklink-component",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "quicklink with react component",
   "main": "build/index.js",
   "repository": {
