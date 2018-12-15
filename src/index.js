@@ -9,8 +9,8 @@ class Quicklink extends React.Component {
   componentDidMount() {
     const quicklinkEle = this.quicklinkRef.current;
     quicklink({
-      el: quicklinkEle,
-      origins: 'reactjs.org'
+      ...this.props.quicklink,
+      el: quicklinkEle
     });
   }
   render() {
