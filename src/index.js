@@ -1,20 +1,24 @@
 import React from "react";
 import quicklink from "./quicklink";
 
+const hasCreateRef = typeof React.createRef === 'function'
+
 class Quicklink extends React.Component {
   constructor(props) {
     super(props);
-    this.quicklinkRef = React.createRef();
+    if (hasCreateRef) {
+      this.quicklinkRef = React.createRef();
+    }
   }
   componentDidMount() {
-    const quicklinkEle = this.quicklinkRef.current;
+    const quicklinkEle = hasCreateRef ? this.quicklinkRef.current : this.quicklinkRef;
     quicklink({
       ...this.props.quicklink,
       el: quicklinkEle
     });
   }
   render() {
-    return <div ref={this.quicklinkRef}>{this.props.children}</div>
+    return hasCreateRef ? <div ref={this.quicklinkRef}>{this.props.children}</div> : <div ref={ele=>{this.quicklinkRef = ele}}>{this.props.children}</div>
   }
 }
 
